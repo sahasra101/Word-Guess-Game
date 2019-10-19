@@ -70,21 +70,13 @@ document.onkeyup = function (event) {
             for (var l = 0; l < word.length; l++) {
                 if (word[l] === guessedLetter) {
                     //type the letter into the word index
-                    guessedLetter = blankWord[l];
+                    blankWord[l] = guessedLetter;
                     letterIsMatched = true;
+                    document.getElementById("blankWordTemplate").textContent = blankWord.join(" ");
 
                 }
                 console.log(letterIsMatched);
-                if (!letterIsMatched) {
-                    //        if (incorrectArray.includes(guessedLetter)) {
-                    //            alert("You have already guessed this letter!");
-                    incorrectArray.push(guessedLetter);
-
-                    console.log("incorrect guesses: " + incorrectArray);
-                    document.getElementById("guessesLeft").textContent = numbGuessesLeft--;
-                    console.log("guesses left: " + numbGuessesLeft);
-
-                }
+               
 
                 document.getElementById("badguesses").innerHTML = ("Incorrect letter guesses: " + incorrectArray);
 
@@ -105,10 +97,23 @@ document.onkeyup = function (event) {
                         alert("Thank you and have a nice day!!");
                     }
 
-                    var done = blankWord.includes("*");
+                    
+                }
+            }
+            if (!letterIsMatched) {
+                //        if (incorrectArray.includes(guessedLetter)) {
+                //            alert("You have already guessed this letter!");
+                incorrectArray.push(guessedLetter);
+
+                console.log("incorrect guesses: " + incorrectArray);
+                document.getElementById("guessesLeft").textContent = numbGuessesLeft--;
+                console.log("guesses left: " + numbGuessesLeft);
+
+            }
+            var done = blankWord.includes("*");
                     console.log(done);
                     if (done !== true) {
-                        wins++;
+                        wins++; 
                         document.getElementById("pwins").textContent = "Wins: " + wins;
                         playagain = prompt("Great Job! You Win!!! Would you like to play again? Y for yes / N for no");
                         if (playagain === "y") {
@@ -117,9 +122,7 @@ document.onkeyup = function (event) {
                         if (playagain === "n") {
                             alert("Thank you for playing! Have a great vacation!");
                         }
-                    }
-                }
-            }
+                    } 
         }
     }
 }            
