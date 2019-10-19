@@ -60,7 +60,7 @@ document.onkeyup = function (event) {
 
             var guessedLetter = event.key.toLowerCase();
             console.log(guessedLetter);
-
+            document.getElementById("guessedletter").textContent = guessedLetter;
 
             //}
 
@@ -75,7 +75,9 @@ document.onkeyup = function (event) {
                     document.getElementById("blankWordTemplate").textContent = blankWord.join(" ");
 
                 }
-                console.log(letterIsMatched);
+                console.log(`at position ${l}, letterIsMatched is: ${letterIsMatched}`);
+
+
                
 
                 document.getElementById("badguesses").innerHTML = ("Incorrect letter guesses: " + incorrectArray);
@@ -96,17 +98,16 @@ document.onkeyup = function (event) {
                     else if (playagain === "n") {
                         alert("Thank you and have a nice day!!");
                     }
-
-                    
                 }
             }
-            if (!letterIsMatched) {
+            if (letterIsMatched = false) {
                 //        if (incorrectArray.includes(guessedLetter)) {
                 //            alert("You have already guessed this letter!");
                 incorrectArray.push(guessedLetter);
 
                 console.log("incorrect guesses: " + incorrectArray);
-                document.getElementById("guessesLeft").textContent = numbGuessesLeft--;
+                numbGuessesLeft--;
+                document.getElementById("guessesLeft").textContent = numbGuessesLeft;
                 console.log("guesses left: " + numbGuessesLeft);
 
             }
