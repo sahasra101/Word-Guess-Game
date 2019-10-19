@@ -1,0 +1,21 @@
+body {
+    background: black;
+}
+
+.text {
+    color: white;
+}
+
+header {
+    border: 3px;
+    border-color: red;
+    height: 150px;
+    width: 100%;
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+    border: 3px;
+    border-color: white; 
+}

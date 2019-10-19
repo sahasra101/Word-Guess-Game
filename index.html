@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,56 +8,121 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Hangman Vacation Hotspots</title>
 </head>
+
 <body>
     <header>
         <h1>
-           Guess The Top 20 Vacation Hotspots In The World
+            Guess The Top 20 Vacation Hotspots In The World
         </h1>
 
         <h2>Hangman - Guess the Word Letter by Letter</h2>
     </header>
 
     <div class="container">
-    <div id="gameStart">
-        <h3>Press any letter to start playing!</h3>
-        <p>(note: use all lowercase letters; and hotspots with two words are written as twowords with no space.) bc I am a rookie javascript coder LOL!!!</p>
+        <div id="gameStart">
+            <h3>Press any letter to start playing!</h3>
+            <p>(note: use all lowercase letters; and hotspots with two words are written as twowords with no space.)</p>
+        </div>
+
+        <div id="stats">
+            <p id="incorrectguessLetters">Your incorrect letter guesses: </p>
+        </div>
+
+        <div>
+            <p>Guesses left: <span id="guessesLeft">(Number from 1 to 10)</span></p>
+        </div>
+
+        <div>
+            <p><span id="blankWordTemplate">(**********)</span></p>
+        </div>
+
     </div>
-
-    <div id="stats" style="display: none;">
-        <p>Your letter guesses: <span id="guessLetters"></span></p>
-        <p>Guesses left: <span id="guessesLeft"></span></p>
-        <p><span id="blankWordTemplate"></span></p>
-      </div>
-
-    </div>  
 
     <script type="text/javascript">
 
         // Array of vacation hotspots
         var words = ["rome", "paris", "newyorkcity", "miami", "orlando", "barcelona", "london", "venice", "dubai", "cancun", "tahiti", "maui", "borabora", "yosemite", "grandcanyon", "machupicchu", "amalficoast", "costarica", "greatbarrierreef", "santorini", "yellowstone", "india"];
 
+        console.log(words[1]);
+
+        // variables to keep track of wins and losses
+        var wins = 0;
+        var losses = 0;
+        // number of guesses and guesses left
+        var numbGuessesWrong = 0;
+        // increment numbGuesses by one with each letter picked that does not matched
+        var numbGuessesLeft = 10;
+        //var finished = false;
+
+        //  assign the letter guessed as the letter keyed with event.key
+        //var letterGuess = event.keyCode;
+
         // random word to be guessed will be denoted by words[index number -randomly generated 0 to 21] 22 words total
-        var word = words[Math.floor(Math.random()) * words.length)];
+
+        var word = words[Math.floor(Math.random() * words.length)];
+        console.log(word)
 
         // set up an blank word template with underscores; one for every letter in the random word. 
-        // blankanswer starts out empty. Use for loop to keep adding underscores up to word.length. each index is a _.
-        var blankAnswer = [];
+        // blankanswer starts out empty. Use for loop to keep adding underscores up to word.length. each index is a *.
+
+        var blankWord = [];
         for (var i = 0; i < word.length; i++) {
-            blankAnswer[i] = "_"
+            blankWord[i] = "*"
+            console.log(blankWord)
         }
 
-        // additional variables to consider
-        // number of guess and guesses left
-        var numberGuessesLeft = 10
+        console.log(blankWord.join(" "))
 
-        // array of guessed letters
-        var guessedLetters =[ ] 
+        document.getElementById("blankWordTemplate").textContent = blankWord.join(" ");
+
+        // Press any key to get started
+        document.onkeyup = function (event) {
 
 
+            // prompt for the guessed letter
+            var guessedLetter = prompt("Pick a letter you think is in the unknown vacation hotspot!");
 
+            // array of guessed letters
+            var guessedLetters = []
+            // for (var j = 0; j < numbGuesses; j++)
+            // guessedLetters[j] = "event.key" + ", "
+            // document.onkeyup = function (event) {
+            // guessedLetter.textContent = event.key;
+            //    };
+
+            // if guessedLetter == word[loop through all indices] {
+            // letter replaces underscore in that index
+            // elso the letter inputed placed into array of guessed letter
+            // else numbGuesses increased by one
+            // elso numberGuessesLeft reduced by one
+
+            // when numberGuessesLeft = 0 then prompt("Sorry, you have no more guesses.  Please play again.")
+
+            var incorrectArray = [];
+            var letterIsMatched = false;
+
+            for (var l = 0; l < word.length; l++) {
+                if (word[l] === guessedLetter) {
+                    //type the letter into the word index
+                    //guessedLetter = blankAnswer[l]
+                    blankWord[l] = guessedLetter;
+                    letterIsMatched = true;
+                }
+
+            }
+            if (!letterIsMatched) {
+                incorrectArray.push(guessedLetter);
+
+
+            }
+            document.getElementById("blankWordTemplate").textContent = blankWord.join(" ");
+            document.getElementById("incorrectguessLetters").textContent = incorrectArray;
+            document.getElementById("guessesLeft").textContent = numbGuessesLeft--;
+
+        }
+    </script>
 
 </body>
 
-    
-</html>
 
+</html>
