@@ -22,7 +22,7 @@ function prepGame() {
     document.getElementById("guessesLeft").textContent = numbGuessesLeft;
     document.getElementById("plosses").textContent = losses;
     document.getElementById("pwins").textContent = wins;
-    
+
     pickWord();
 }
 
@@ -42,7 +42,7 @@ function makeBlanks(word) {
     showBlanks(blankWord);
 }
 
-function showBlanks(word){
+function showBlanks(word) {
     // Display blankWord array on the screen
     document.getElementById("blankWordTemplate").textContent = word.join(" ");
     playGame(word);
@@ -78,36 +78,64 @@ function checkLetterForMatch(letter, blankArray) {
             letterIsMatched = true;
             blankArray[l] = letter;
             showBlanks(blankArray);
-        } 
+            if (!blankArray.includes("*")) {
+                winGame();
+            }
+        }
     }
 
     if (!letterIsMatched) {
-        console.log(`Below is incorrectArray:`);
-        console.log(incorrectArray);
-        incorrectArray.push(letter);
-        displayIncorrectLetters(incorrectArray);
-        wrongLetter();
+        if (incorrectArray.includes(letter)) {
+            alert(`You have already guessed ${letter}. Please try a different letter!`);
+        } else {
+            console.log(`Below is incorrectArray:`);
+            console.log(incorrectArray);
+            incorrectArray.push(letter);
+            displayIncorrectLetters(incorrectArray);
+            wrongLetter();
+        }
     }
 }
 
-function displayIncorrectLetters(incorrectArray){
+function displayIncorrectLetters(incorrectArray) {
     document.getElementById("badguesses").innerHTML = incorrectArray;
 }
 
 
-function wrongLetter(){
+function wrongLetter() {
     numbGuessesLeft--;
-    if (numbGuessesLeft === 0){
+    if (numbGuessesLeft === 0) {
         loseGame();
     } else {
-    document.getElementById("guessesLeft").textContent = numbGuessesLeft;
+        document.getElementById("guessesLeft").textContent = numbGuessesLeft;
     }
 }
 
 function loseGame() {
     losses++;
     incorrectArray = [];
+    displayIncorrectLetters(incorrectArray);
+    blankWord = [];
     numbGuessesLeft = 10;
-    alert(`You have lost.`);
+    alertLose();
     prepGame();
+
+}
+
+function winGame() {
+    wins++;
+    incorrectArray = [];
+    displayIncorrectLetters(incorrectArray);
+    blankWord = [];
+    numbGuessesLeft = 10;
+    alertWin();
+    prepGame();
+}
+
+function alertLose() {
+    alert(`You have LOST. The correct vacation hotspot was ${word}. Click ok to play again.`);
+}
+
+function alertWin() {
+    alert(`You have WON. You guessed ${word} correctly! Click ok to play again.`);
 }
