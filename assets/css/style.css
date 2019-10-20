@@ -1,20 +1,27 @@
 body {
-    background: black;
+    background: url("../images/cancun1.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    
 }
 
 .text {
-    color: white;
+    color: black;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
 }
 
 header {
-    border: 3px;
-    border-color: red;
+    border: 3px solid black;
     height: 150px;
     width: 100%;
+    margin: auto;
+    text-align: center;
 }
 
 .container {
     width: 50%;
+    float: right;
     margin: auto;
     border: 3px;
     border-color: white; 

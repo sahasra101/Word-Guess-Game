@@ -98,7 +98,7 @@ function checkLetterForMatch(letter, blankArray) {
 }
 
 function displayIncorrectLetters(incorrectArray) {
-    document.getElementById("badguesses").innerHTML = incorrectArray;
+    document.getElementById("badguesses").innerHTML = incorrectArray.join(" ");
 }
 
 
