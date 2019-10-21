@@ -1,5 +1,5 @@
 // Array of words w vacation hotspot theme
-var words = ["rome", "paris", "newyorkcity", "miami", "orlando", "barcelona", "london", "venice", "dubai", "cancun", "tahiti", "maui", "borabora", "yosemite", "grandcanyon", "machupicchu", "amalficoast", "costarica", "greatbarrierreef", "santorini", "yellowstone", "india"];
+var words = ["rome", "paris", "newyorkcity", "riodejaneiro", "prague", "phuket", "maldives", "stlucia", "virginislands", "patagonia", "florence", "sydney", "banff", "amsterdam", "sanfransisco", "miami", "orlando", "barcelona", "london", "venice", "dubai", "cancun", "tahiti", "maui", "borabora", "yosemite", "grandcanyon", "machupicchu", "amalficoast", "costarica", "greatbarrierreef", "santorini", "yellowstone", "india"];
 console.log(words[0], words[20]); //check if works
 
 // variables needed for guesses and to keep track of stats

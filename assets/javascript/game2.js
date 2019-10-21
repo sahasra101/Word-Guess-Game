@@ -1,10 +1,10 @@
 // Array of words w vacation hotspot theme
-var words = ["rome", "paris", "newyorkcity", "miami", "orlando", "barcelona", "london", "venice", "dubai", "cancun", "tahiti", "maui", "borabora", "yosemite", "grandcanyon", "machupicchu", "amalficoast", "costarica", "greatbarrierreef", "santorini", "yellowstone", "india"];
+var words = ["rome", "paris", "newyorkcity", "riodejaneiro", "prague", "phuket", "maldives", "stlucia", "virginislands", "patagonia", "florence", "sydney", "banff", "amsterdam", "sanfransisco", "miami", "orlando", "barcelona", "london", "venice", "dubai", "cancun", "tahiti", "maui", "borabora", "yosemite", "grandcanyon", "machupicchu", "amalficoast", "costarica", "greatbarrierreef", "santorini", "yellowstone", "india"];
 
 // variables needed for guesses and to keep track of stats
 var wins = 0;
 var losses = 0;
-var word = "";
+var word = ""; 
 var guessedLetter = "";
 var numbGuessesWrong = 0;
 var numbGuessesLeft = 10;
